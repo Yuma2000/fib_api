@@ -51,7 +51,7 @@ pip install Flask
 2. アプリケーションの実行:
 
 ```bash
-python app.py
+python3 app.py
 ```
 
 このコマンドを実行すると、デフォルトで`http://127.0.0.1:5000/`でサーバが起動します。
@@ -59,5 +59,5 @@ python app.py
 3. ユニットテストの実行:
 
 ```bash
-python -m unittest tests/test_api.py
+python3 -m unittest tests/test_api.py
 ```
