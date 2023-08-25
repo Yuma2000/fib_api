@@ -1,5 +1,6 @@
 import unittest
-from app import app, MAX_N_VALUE
+
+from app import MAX_N_VALUE, app
 
 CONTENT_TYPE_JSON = "application/json"
 

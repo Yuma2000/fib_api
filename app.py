@@ -1,5 +1,11 @@
-from flask import Flask, request, jsonify
+import os
+
+from dotenv import load_dotenv
+from flask import Flask, jsonify, request
+
 from fibonacci_calculator import fibonacci
+
+load_dotenv()
 
 app = Flask(__name__)
 MAX_N_VALUE = 100000
@@ -56,4 +62,5 @@ def get_fibonacci():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    DEBUG_MODE = os.environ.get('DEBUG_MODE', 'False').lower() == 'true'
+    app.run(debug=DEBUG_MODE)
