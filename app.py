@@ -13,6 +13,13 @@ MAX_N_VALUE = 100000
 
 @app.route('/', methods=['GET'])
 def index():
+    """
+    このAPIの使用方法を示す情報を返す。
+
+    Returns:
+    - json: APIの使用方法を示す情報。
+    - int: HTTPステータスコード
+    """
     usage = {
         "message": "Welcome to the Fibonacci API!",
         "usage": {
@@ -30,11 +37,32 @@ def index():
 
 
 def create_error_response(status_code, message):
+    """
+    エラーメッセージを含むJSONレスポンスを作成し、返す。
+
+    Parameters:
+    - status_code (int): HTTPステータスコード
+    - message (str): エラーメッセージ
+
+    Returns:
+    - json: エラーメッセージを含むJSON。
+    - int: HTTPステータスコード
+    """
     return jsonify({"status": status_code, "message": message}), status_code
 
 
 @app.route('/fib', methods=['GET'])
 def get_fibonacci():
+    """
+    フィボナッチ数列のn番目の値を計算して返す。
+
+    Returns:
+    - json: フィボナッチ数列のn番目の値。
+    - int: HTTPステータスコード
+
+    Raises:
+    - ValueError: 不正なパラメータ値の場合。
+    """
     try:
         # リクエストヘッダーがJSON形式かどうか確認する
         if request.headers.get("Content-Type") != "application/json":
