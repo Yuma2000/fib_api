@@ -60,6 +60,25 @@ class TestFibonacciAPI(unittest.TestCase):
         expected_message = f"Value too large. Maximum allowed is {MAX_N_VALUE}."
         self.assertEqual(data['message'], expected_message)
 
+    def test_fibonacci_values(self):
+        test_cases = [
+            (1, 1),
+            (2, 1),
+            (3, 2),
+            (4, 3),
+            (5, 5),
+            (6, 8),
+            (7, 13),
+            (8, 21),
+            (9, 34),
+            (10, 55),
+        ]
+        for n, expected in test_cases:
+            response = self.app.get(f'/fib?n={n}', headers={"Content-Type": CONTENT_TYPE_JSON})
+            data = response.get_json()
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(data['result'], expected, f"Failed for n={n}")
+
 
 if __name__ == '__main__':
     unittest.main()
